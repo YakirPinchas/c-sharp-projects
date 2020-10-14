@@ -1,0 +1,59 @@
+﻿@model WEB.Models.ImageWebModel
+@{
+	ViewBag.Title = "ImageWeb";
+}
+
+<h2>Image Web</h2>
+<table class="table table-striped table-dark">
+	<tr>
+		<th>Service Status</th>
+		<td class="text-md-center">
+			@if (Model.IsConnected)
+			{
+				<span style="font-weight: bold; font-size: large" class="badge badge-success">Active</span>
+			}
+			else
+			{
+				<span style="font-weight: bold; font-size: large" class="badge badge-warning">Inactive</span>
+			}
+		</td>
+	</tr>
+	<tr>
+		<th>Number of Stored Photos</th>
+		<td class="text-center">
+			@if (Model.NumOfPics > 0)
+			{
+				<span style="font-weight: normal; font-size: large">@Model.NumOfPics</span>
+			}
+			else
+			{
+				<span style="font-weight: normal; font-size: large">N/A</span>
+			}
+
+		</td>
+	</tr>
+
+
+</table>
+
+<h3>Student Details</h3>
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">First Name</th>
+			<th scope="col">Last Name</th>
+			<th scope="col">ID Number</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var student in Model.Students)
+		{
+			<tr>
+				<td>@Html.DisplayName(student.firstName.ToString())</td>
+				<td>@Html.DisplayName(student.lastName.ToString())</td>
+				<td>@Html.DisplayName(student.id.ToString())</td>
+			</tr>
+		}
+
+	</tbody>
+</table>
